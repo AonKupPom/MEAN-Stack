@@ -22,7 +22,7 @@ export class User {
 export class UserService {
 
   // Node/Express API
-  REST_API: string = 'https://aon-mean-backend.herokuapp.com/api';
+  REST_API: string = 'https://mean-stack-aon.herokuapp.com/api';
   // Http header
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -45,12 +45,12 @@ export class UserService {
 
   // Get all user
   getUsers() {
-    return this.http.get(`https://aon-mean-backend.herokuapp.com/api/getUsers`);
+    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getUsers`);
   }
 
   // Get user by id
   getUser(id: any): Observable<any>{
-    return this.http.get(`https://aon-mean-backend.herokuapp.com/api/getUserById/${id}`, { headers: this.httpHeaders }).pipe(map((res) => {
+    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getUserById/${id}`, { headers: this.httpHeaders }).pipe(map((res) => {
       return res || {}
     }),
     catchError(this.handleError)
@@ -59,18 +59,18 @@ export class UserService {
 
   // Update user
   updateUser(id: any, data: any): Observable<any>{
-    return this.http.put(`https://aon-mean-backend.herokuapp.com/api/updateUser/${id}`, data, { headers: this.httpHeaders }).pipe(catchError(this.handleError));
+    return this.http.put(`https://mean-stack-aon.herokuapp.com/api/updateUser/${id}`, data, { headers: this.httpHeaders }).pipe(catchError(this.handleError));
   }
 
   // Delete Book
   deleteUser(id: any): Observable<any> {
-    return this.http.delete(`https://aon-mean-backend.herokuapp.com/api/deleteUser/${id}`, {headers: this.httpHeaders}).pipe(catchError(this.handleError));
+    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteUser/${id}`, {headers: this.httpHeaders}).pipe(catchError(this.handleError));
   }
 
   updateProfile_picture(id: any, profile_picture) {
     const formData = new FormData();
     formData.append('profile_picture', profile_picture == null ? null : profile_picture[0]);
-    return this.http.put<any>(`https://aon-mean-backend.herokuapp.com/api/updateProfile_picture/${id}`, formData).pipe(catchError(this.handleError));
+    return this.http.put<any>(`https://mean-stack-aon.herokuapp.com/api/updateProfile_picture/${id}`, formData).pipe(catchError(this.handleError));
   }
 
 }

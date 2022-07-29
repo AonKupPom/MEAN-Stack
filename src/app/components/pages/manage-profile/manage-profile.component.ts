@@ -27,7 +27,7 @@ export class ManageProfileComponent implements OnInit {
   }
   profile_picture
   editForm: FormGroup
-  path = "https://aon-mean-backend.herokuapp.com/";
+  path = "https://mean-stack-aon.herokuapp.com/";
   jwt = new JwtHelperService();
 
   constructor(

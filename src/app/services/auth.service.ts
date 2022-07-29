@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   login(data){
-    return this.http.post<any>('https://aon-mean-backend.herokuapp.com/api/login', data);
+    return this.http.post<any>('https://mean-stack-aon.herokuapp.com/api/login', data);
   }
 
   register(data){
@@ -42,11 +42,11 @@ export class AuthService {
       tel: data.register_tel,
       address: data.register_address
     }
-    return this.http.post<any>('https://aon-mean-backend.herokuapp.com/api/register', user)
+    return this.http.post<any>('https://mean-stack-aon.herokuapp.com/api/register', user)
   }
 
   sendToken(token){
-    return this.http.post<any>('https://aon-mean-backend.herokuapp.com/api/sendToken',{token: token})
+    return this.http.post<any>('https://mean-stack-aon.herokuapp.com/api/sendToken',{token: token})
   }
 
   async logout(): Promise<void> {
@@ -70,7 +70,7 @@ export class AuthService {
 
   getCurrentUser(){
     const token = localStorage.getItem('token');
-    return this.http.post<any>('https://aon-mean-backend.herokuapp.com/api/getCurrentUser',{token: token})
+    return this.http.post<any>('https://mean-stack-aon.herokuapp.com/api/getCurrentUser',{token: token})
   }
 
 }
