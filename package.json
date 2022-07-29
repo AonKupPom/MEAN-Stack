@@ -1,9 +1,9 @@
 {
-  "name": "mean-stack-frontend",
+  "name": "mean-stack",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "node app.ts",
     "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -38,7 +38,19 @@
     "sweetalert2": "^11.4.20",
     "tslib": "^2.3.0",
     "typescript": "~4.4.3",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express-fileupload": "^1.2.1",
+    "express-session": "^1.17.2",
+    "fs": "0.0.1-security",
+    "mongoose": "^6.4.3",
+    "mongoose-unique-validator": "^3.0.0",
+    "ts-node": "~10.8.2"
   },
   "devDependencies": {
     "@ng-bootstrap/ng-bootstrap": "^11.0.1",

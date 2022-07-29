@@ -45,6 +45,7 @@ angularapp/
 package-lock.json/
 # TypeScript v1 declaration files
 typings/
+uploads
 
 # TypeScript cache
 *.tsbuildinfo
