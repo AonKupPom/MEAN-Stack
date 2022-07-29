@@ -1,0 +1,97 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.page-section{
+  margin-top: 5%;
+  overflow: hidden;
+  color: #6b6b6b;
+}
+
+.fadeIn {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 1s;
+}
+
+.mb-10 {
+  margin-bottom: 10%;
+}
+
+.reveal-left{
+  position: relative;
+  transform: translateX(-150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal-left.active{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.reveal-right{
+  position: relative;
+  transform: translateX(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal-right.active{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.reveal-top{
+  position: relative;
+  transform: translateY(-150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal-top.active{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.reveal-bottom{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal-bottom.active{
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.me{
+  color: #4b4b4b;
+  margin-bottom: 5%;
+}
+
+.menu-services{
+  color: #a0a0a0;
+  margin-bottom: 10%;
+}
+
+.why-mean-stack {
+  text-align: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  color: #4b4b4b;
+  font-size: 60px;
+}

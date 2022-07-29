@@ -1,0 +1,165 @@
+<div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-borderless table-striped fadeIn">
+      <thead>
+        <tr>
+          <th colspan="3" scope="col"><h1 class="domainlist">รายการโดเมน</h1></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">
+            <button class="btn btn-sm btn-primary" (click)="open(add_modal)" id="add-domain">เพิ่มโดเมน</button>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="10">
+            <div class="border-bottom"></div>
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">ชื่อ</th>
+          <th class="text-center" scope="col">ราคา</th>
+          <th scope="col">รายละเอียด</th>
+          <th scope="col">โปรโมชั่น</th>
+          <th class="text-center" scope="col">ขนาดความจุ</th>
+          <th class="text-center" scope="col">แบนด์วิด</th>
+          <th class="text-center" scope="col">จำนวนโดเมน</th>
+          <th class="text-center" scope="col">จำนวนอีเมล</th>
+          <th class="text-center" scope="col">จำนวนฐานข้อมูล</th>
+          <th class="text-center" scope="col">จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Domains; let i = index">
+          <td class="align-middle" scope="row">{{item.title}}</td>
+          <td class="text-center align-middle">{{item.price}}</td>
+          <td class="align-middle">{{item.description}}</td>
+          <td class="align-middle">{{item.promotion}}</td>
+          <td class="text-center align-middle">{{item.space}} GB</td>
+          <td class="text-center align-middle">{{item.bandwidth}} MB/mo</td>
+          <td class="text-center align-middle">{{item.domain_amouth}}</td>
+          <td class="text-center align-middle">{{item.email_amouth}}</td>
+          <td class="text-center align-middle">{{item.database_amouth}}</td>
+          <td class="text-center" class="text-center">
+            <button class="btn btn-sm btn-success" (click)="openEdit(edit_modal, item._id)">แก้ไข</button>
+            <button class="btn btn-sm btn-danger" (click)="openDelete(delete_modal,item._id, i)">ลบ</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #add_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">เพิ่มโดเมน</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="domainForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="title" required placeholder="ชื่อโดเมน">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="price" required placeholder="ราคา">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="description" required placeholder="รายละเอียด">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="promotion" required placeholder="โปรโมชัน">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="space" required placeholder="ขนาดความจุ">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="bandwidth" required placeholder="แบนด์วิด">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="domain_amouth" required placeholder="จำนวนโดเมน">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="email_amouth" required placeholder="จำนวนอีเมล">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="database_amouth" required placeholder="จำนวนฐานข้อมูล">
+      </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group mt-3">
+      <button class="btn btn-primary btn-block" id="btn-add-modal" (click)="d('Cross click')" type="submit">เพิ่มโดเมน</button>
+    </div>
+  </div>
+</form>
+</ng-template>
+
+<ng-template #edit_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">แก้ไขรายละเอียด</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="editForm" (ngSubmit)="onUpdate()">
+  <div class="modal-body">
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="title" required placeholder="ชื่อโดเมน">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="price" required placeholder="ราคา">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="description" required placeholder="รายละเอียด">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="promotion" required placeholder="โปรโมชัน">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="space" required placeholder="ขนาดความจุ">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="bandwidth" required placeholder="แบนด์วิด">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="domain_amouth" required placeholder="จำนวนโดเมน">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="email_amouth" required placeholder="จำนวนอีเมล">
+    </div>
+    <div class="form-group mt-3">
+      <input type="text" class="form-control" formControlName="database_amouth" required placeholder="จำนวนฐานข้อมูล">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group mt-3">
+      <button class="btn btn-primary btn-block" id="btn-add-modal" (click)="d('Cross click')" type="submit">ยืนยัน</button>
+    </div>
+  </div>
+</form>
+</ng-template>
+
+<ng-template #delete_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <!-- <h4 class="modal-title" id="modal-basic-title">ลบข้อมูล</h4> -->
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center" id="deleteModal">
+    <div class="row mt-12">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#FF6666" class="x-phosphor-x-circle-thin" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    </div>
+    <p id="first-sure">คุณต้องการลบข้อมูลหรือไม่?</p>
+    <p id="second-sure">หากคุณทำการยืนยัน ข้อมูลนี้จะถูกลบออกทันทีจากนั้นจะไม่สามารถนำข้อมูลกลับมาได้</p>
+    <div class="respondsive">
+      <button class="btn-delete btn-secondary btn-block" id="deleteCancle" (click)="d('Cross click')" type="submit">ยกเลิก</button>
+      <button class="btn-delete btn-danger btn-block" id="deleteSubmit" (click)="delete(deleteId,deleteIndex)" (click)="d('Cross click')">ยืนยัน</button>
+    </div>
+  </div>
+  <!-- <div class="modal-footer text-center">
+      <button class="btn-delete btn-success btn-block" (click)="delete(deleteId,deleteIndex)" (click)="d('Cross click')">ยืนยัน</button>
+      <button class="btn-delete btn-danger btn-block" (click)="d('Cross click')" type="submit">ยกเลิก</button>
+  </div> -->
+</ng-template>

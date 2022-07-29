@@ -1,0 +1,162 @@
+<div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-borderless table-striped fadeIn">
+      <thead>
+        <tr>
+          <th colspan="3"><h1 class="computerlist">รายการคอมพิวเตอร์</h1></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col">
+            <button class="btn btn-sm btn-primary" (click)="open(add_modal)" id="add-computer">เพิ่มรายการ</button>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="8">
+            <div class="border-bottom"></div>
+          </th>
+        </tr>
+        <tr>
+          <th class="text-center" scope="col">ภาพประกอบ</th>
+          <th class="text-center" scope="col">ชื่อรุ่น</th>
+          <th class="text-center" scope="col">ราคา</th>
+          <th class="text-center" scope="col">โมเดล</th>
+          <th scope="col">สเปกเครื่อง</th>
+          <th scope="col">รายละเอียด</th>
+          <th class="text-center" scope="col">ประเภทคอมพิวเตอร์</th>
+          <th class="text-center" scope="col">จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Computers; let i = index">
+          <td class="text-center align-middle" scope="row">
+            <img draggable="false" src="{{path}}{{item.image}}" height="70px" alt="">
+          </td>
+          <td class="text-center align-middle">{{item.name}}</td>
+          <td class="text-center align-middle">{{item.price}}บาท</td>
+          <td class="text-center align-middle">{{item.model}}</td>
+          <td class="align-middle">{{item.specification}}</td>
+          <td class="align-middle">{{item.description}}</td>
+          <td class="text-center align-middle">{{item.type}}</td>
+          <td class="text-center align-middle">
+            <button class="btn btn-sm btn-success" (click)="openEdit(edit_modal, item._id)">แก้ไข</button>
+            <button class="btn btn-sm btn-danger" (click)="openDelete(delete_modal,item._id, i)">ลบ</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #add_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">เพิ่มคอมพิวเตอร์</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="addForm_reset()" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="computerForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="name" required placeholder="ชื่อรุ่น">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="price" required placeholder="ราคา">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="model" required placeholder="โมเดล">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="specification" required placeholder="สเปกเครื่อง">
+      </div>
+      <div class="form-group mt-3">
+        <button type="button" class="form-control upload-button" (click)="addImage.click()">
+          <i class="fa-solid fa-circle-arrow-up"></i> อัพโหลด
+          <input #addImage type="file" (change)="preview($event.target , 0)" hidden>
+        </button>
+    </div>
+    <div class="form-group text-center">
+      <label class="form-control no-border" for="file_allx">{{ImageName}}</label>
+    </div>
+    <div class="form-group text-center">
+      <img draggable="false" [src]="imgURL" height="200" *ngIf="imgURL">
+    </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="description" required placeholder="รายละเอียด">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="type" required placeholder="ประเภทคอมพิวเตอร์">
+      </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group mt-3">
+      <button class="btn btn-primary btn-block" id="btn-add-modal" (click)="d('Cross click')" type="submit">เพิ่มรายการ</button>
+    </div>
+  </div>
+</form>
+</ng-template>
+
+<ng-template #edit_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">แก้ไขรายละเอียด</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="editForm_reset()" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="editForm" (ngSubmit)="onUpdate()">
+  <div class="modal-body">
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="name" required placeholder="ชื่อรุ่น">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="price" required placeholder="ราคา">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="model" required placeholder="โมเดล">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="specification" required placeholder="สเปกเครื่อง">
+      </div>
+      <div class="form-group mt-3">
+          <button type="button" class="form-control upload-button" (click)="editImage.click()">
+            <i class="fa-solid fa-circle-arrow-up"></i> อัพโหลด
+            <input #editImage type="file" (change)="preview($event.target , 1)" hidden>
+          </button>
+      </div>
+      <div class="form-group text-center">
+        <label class="form-control no-border" for="file_allx">{{defaultImage}}</label>
+      </div>
+      <div class="form-group text-center">
+        <img draggable="false" [src]="editimgURL" height="200" *ngIf="editimgURL">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="description" required placeholder="รายละเอียด">
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" formControlName="type" required placeholder="ประเภทคอมพิวเตอร์">
+      </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group mt-3">
+      <button class="btn btn-primary btn-block" id="btn-add-modal" (click)="d('Cross click')" type="submit">ยืนยัน</button>
+    </div>
+  </div>
+</form>
+</ng-template>
+
+<ng-template #delete_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center" id="deleteModal">
+    <div class="row mt-12">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#FF6666" class="x-phosphor-x-circle-thin" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+      </svg>
+    </div>
+    <p id="first-sure">คุณต้องการลบข้อมูลหรือไม่?</p>
+    <p id="second-sure">หากคุณทำการยืนยัน ข้อมูลนี้จะถูกลบออกทันทีจากนั้นจะไม่สามารถนำข้อมูลกลับมาได้</p>
+    <div class="respondsive">
+      <button class="btn-delete btn-secondary btn-block" id="deleteCancle" (click)="d('Cross click')" type="submit">ยกเลิก</button>
+      <button class="btn-delete btn-danger btn-block" id="deleteSubmit" (click)="delete(deleteId,deleteIndex)" (click)="d('Cross click')">ยืนยัน</button>
+    </div>
+  </div>
+</ng-template>

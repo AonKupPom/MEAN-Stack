@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/welcome">MEAN Stack</a>
+    <button class="navbar-toggler" type="button" (click)="collapseMenu()" [attr.aria-expanded]="!toggleNavbar" aria-controls="navbarTogglerDemo03">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="{{collapse}} navbar-collapse animate slideIn" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" id="first-page" routerLink="/welcome"><i class="fa fa-house"></i>หน้าแรก</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/about-us"><i class="fa fa-address-card"></i>เกี่ยวกับเรา</a>
+        </li>
+        <li class="nav-item active dropdown" id="nav-dropdown">
+          <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+            <i class="fa fa-globe"></i>บริการ
+          </a>
+          <div class="dropdown-menu dropdown-menu-end animate slideIn">
+            <a class="dropdown-item" routerLink="/cloud-service"><i class="fa fa-cloud"></i>บริการคลาวด์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/domain-service"> <i class="fa-regular fa-rectangle-list"></i>บริการโดเมน</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/website-design-service"><i class="fa fa-code"></i>ออกแบบเว็บไซต์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/server-service"><i class="fa fa-server"></i>ดูแลระบบเซิร์ฟเวอร์</a>
+          </div>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/contact-us"><i class="fa fa-phone"></i>ติดต่อเรา</a>
+        </li>
+        <li *ngIf="isLoggedIn && auth.currentUser.role == 'admin'" class="nav-item active dropdown" id="nav-dropdown">
+          <a class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+            <i class="fa fa-list-check"></i>จัดการ
+          </a>
+          <div class="dropdown-menu dropdown-menu-end animate slideIn">
+            <a class="dropdown-item" routerLink="/manage-cloud"><i class="fa fa-cloud"></i>บริการคลาวด์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/manage-domain"><i class="fa-regular fa-rectangle-list"></i>บริการโดเมน</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/manage-web-design"><i class="fa fa-code"></i>ออกแบบเว็บไซต์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/manage-server-service"><i class="fa fa-server"></i>ดูแลระบบเซิร์ฟเวอร์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/computer-list"><i class="fa fa-desktop"></i>คอมพิวเตอร์</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/manage-user"><i class="fa-regular fa-user"></i>ผู้ใช้งาน</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ul *ngIf="isLoggedIn" class="navbar-nav ms-auto">
+      <span class="user-loggedIn">คุณ{{auth.currentUser.firstname}}</span>
+      <li (click)="toggleUser()" class="dropdown" type="checkbox" id="nav-dropdown-user">
+        <a class="nav-link dropdown-toggle" id="navbardrop">
+          <img draggable="false" class="profile-icon" width="35px" src="/assets/img/user_img.jpg">
+        </a>
+        <div *ngIf="UserDropdown" class="user-dropdown animate slideIn">
+          <a class="dropdown-item" routerLink="/manage-profile">โปรไฟล์<i class="fa-solid fa-user"></i></a>
+          <a class="dropdown-item">การตั้งค่า<i class="fa-solid fa-gear"></i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">ออกจากระบบ<i class="fa fa-right-from-bracket" id="logout-icon"></i></a>
+        </div>
+      </li>
+    </ul>
+    <ul *ngIf="!isLoggedIn" class="navbar-nav ms-auto">
+      <span class="login" (click)="login()">เข้าสู่ระบบ</span>
+        <a role="button" (click)="login()" aria-haspopup="true" aria-expanded="false">
+          <img draggable="false" class="profile-icon" width="35px" src="https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png">
+        </a>
+    </ul>
+  </div>
+</nav>

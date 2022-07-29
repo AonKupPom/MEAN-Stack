@@ -1,0 +1,60 @@
+<div class="container mt-3">
+  <div class="table-responsive">
+    <table class="table table-borderless table-striped fadeIn">
+      <thead>
+        <tr>
+          <th colspan="3" scope="col">
+            <h1 class="userlist">จัดการสิทธิ์ของผู้ใช้งาน</h1>
+          </th>
+        </tr>
+        <tr>
+          <th colspan="4">
+            <div class="border-bottom"></div>
+          </th>
+        </tr>
+        <tr>
+          <th scope="col">รหัสผู้ใช้งาน</th>
+          <th scope="col">ชื่อ</th>
+          <th class="text-center" scope="col">ตำแหน่ง</th>
+          <th class="text-center" scope="col">จัดการ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of Users; let i = index">
+          <th class="align-middle" scope="row">{{item._id}}</th>
+          <td class="align-middle" scope="row">{{item.title}}{{item.firstname}} {{item.lastname}}</td>
+          <td class="text-center align-middle">{{item.role}}</td>
+          <td class="text-center" class="text-center">
+            <button class="btn btn-sm btn-success" (click)="openEdit(edit_modal, item._id)">จัดการสิทธิ์</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<ng-template #edit_modal let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">แก้ไขรายละเอียด</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <form [formGroup]="editForm" (ngSubmit)="onUpdate()">
+  <div class="modal-body">
+    <div class="form-group mt-3">
+      <label>ชื่อ</label> <label>{{User.name}}</label>
+    </div>
+    <div class="form-group mt-3">
+      <label>ตำแหน่ง</label>
+      <select class="select" formControlName="role">
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+      </select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <div class="form-group mt-3">
+      <button class="btn btn-primary btn-block" id="btn-add-modal" (click)="d('Cross click')" type="submit">ยืนยัน</button>
+    </div>
+  </div>
+</form>
+</ng-template>

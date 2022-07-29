@@ -1,0 +1,221 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 (click)="signIn()" class={{SignIn_activate}}>เข้าสู่ระบบ</h2>
+    <h2 (click)="signUp()" class={{Register_activate}}>สมัครสมาชิก</h2>
+
+    <!-- Login Form -->
+    <form *ngIf="SignIn_activate == 'active'" [formGroup]="loginForm" class="login-form" (ngSubmit)="login()">
+      <div class="form-group row container">
+        <input type="text" class="fadeIn second login_input" id="email" name="email" formControlName="email" placeholder="อีเมล"
+          [ngClass]="{ 'is-invalid': loginForm_submit && login_Form.email.errors }">
+        <div class="col" *ngIf="loginForm_submit && login_Form.email.errors">
+          <div *ngIf="login_Form.email.errors.required" class="text-danger">* กรุณากรอกอีเมล</div>
+        </div>
+      </div>
+      <div class="form-group row container">
+        <input type="password" class="fadeIn third login_input" name="password" formControlName="password" placeholder="รหัสผ่าน"
+          [ngClass]="{ 'is-invalid': loginForm_submit && login_Form.password.errors }">
+        <div class="col" *ngIf="loginForm_submit && login_Form.password.errors">
+          <div *ngIf="login_Form.password.errors.required" class="text-danger">* กรุณากรอกรหัสผ่าน</div>
+        </div>
+      </div>
+      <input type="submit" class="fadeIn fourth" value="เข้าสู่ระบบ">
+    </form>
+
+    <form *ngIf="Register_activate == 'active'" [formGroup]="registerForm" class="register-form"
+      (ngSubmit)="register()">
+
+      <div class="form-group row container">
+        <div class="col-md-4 d-flex justify-content-start">
+          <div class="row">
+            <select name="register_title" class="fadeIn second register_title" formControlName="register_title"
+              [ngClass]="{ 'is-invalid': registerForm_submit && register_Form.register_title.errors }">
+              <option [ngValue]="null" disabled>คำนำหน้า</option>
+              <option value="นาย">นาย</option>
+              <option value="นาง">นาง</option>
+              <option value="นางสาว">นางสาว</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <input type="text" class="fadeIn second register_input" name="register_firstname"
+              formControlName="register_firstname" placeholder="ชื่อ">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div class="col-md-4">
+          <div *ngIf="registerForm_submit && register_Form.register_title.errors">
+            <div *ngIf="register_Form.register_title.errors.required" class="text-danger">*
+              กรุณาระบุคำนำหน้า</div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div *ngIf="registerForm_submit && register_Form.register_firstname.errors">
+            <div *ngIf="register_Form.register_firstname.errors.required" class="text-danger">*
+              กรุณากรอกชื่อ</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="text" class="fadeIn second register_input" name="register_lastname"
+              formControlName="register_lastname" placeholder="นามสกุล">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div *ngIf="registerForm_submit && register_Form.register_lastname.errors">
+          <div *ngIf="register_Form.register_lastname.errors.required" class="text-danger">*
+            กรุณากรอกนามสกุล</div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="text" class="fadeIn second register_input" name="register_email"
+              formControlName="register_email" placeholder="อีเมล">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div *ngIf="registerForm_submit && register_Form.register_email.errors">
+          <div *ngIf="register_Form.register_email.errors.required" class="text-danger">* กรุณากรอกอีเมล
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="password" class="fadeIn third register_input" name="register_password"
+              formControlName="register_password" placeholder="รหัสผ่าน">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div *ngIf="registerForm_submit && register_Form.register_password.errors">
+          <div *ngIf="register_Form.register_password.errors.required" class="text-danger">*
+            กรุณากรอกรหัสผ่าน</div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="password" class="fadeIn third register_input" name="repeat_password"
+              formControlName="repeat_password" placeholder="ยืนยันรหัสผ่าน">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div *ngIf="registerForm_submit && register_Form.repeat_password.errors">
+          <div *ngIf="register_Form.repeat_password.errors.required" class="text-danger">
+            * กรุณากรอกยืนยันรหัสผ่าน</div>
+        </div>
+        <div *ngIf="checkRepeatPassword">
+          <div
+            *ngIf="registerForm.value.register_password != registerForm.value.repeat_password"
+            class="text-danger">
+            * ยืนยันรหัสผ่านไม่ตรงกัน
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col-md-3 text-align-left">
+          <div class="row">
+            <span class="fadeIn third">วันเกิด</span>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <input type="date" class="fadeIn third register_input" name="register_birthdate"
+              formControlName="register_birthdate">
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-8">
+          <div *ngIf="registerForm_submit && register_Form.register_birthdate.errors">
+            <div *ngIf="register_Form.register_birthdate.errors.required" class="text-danger">*
+              กรุณาระบุวันเกิด</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <select name="register_gender" class="fadeIn third register_gender" formControlName="register_gender">
+              <option [ngValue]="null" disabled>เพศ</option>
+              <option value="ชาย">ชาย</option>
+              <option value="หญิง">หญิง</option>
+              <option value="อื่นๆ">อื่นๆ</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row container">
+        <div *ngIf="registerForm_submit && register_Form.register_gender.errors">
+          <div *ngIf="register_Form.register_gender.errors.required" class="text-danger">* กรุณาระบุเพศ
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="text" class="fadeIn third register_input" name="register_tel" formControlName="register_tel"
+              placeholder="เบอร์โทรศัพท์">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngIf="registerForm_submit && register_Form.register_tel.errors">
+          <div *ngIf="register_Form.register_tel.errors.required" class="text-danger">*
+            กรุณากรอกเบอร์โทรศัพท์</div>
+        </div>
+      </div>
+
+      <div class="form-group row container">
+        <div class="col">
+          <div class="row">
+            <input type="text" class="fadeIn third register_input" name="register_address"
+              formControlName="register_address" placeholder="ที่อยู่">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div *ngIf="registerForm_submit && register_Form.register_address.errors">
+          <div *ngIf="register_Form.register_address.errors.required" class="text-danger">*
+            กรุณากรอกที่อยู่</div>
+        </div>
+      </div>
+
+      <input type="submit" class="fadeIn fourth" value="สมัครสมาชิก">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover">ลืมรหัสผ่าน?</a>
+    </div>
+
+  </div>
+</div>

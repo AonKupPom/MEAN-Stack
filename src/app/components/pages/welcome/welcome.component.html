@@ -1,0 +1,148 @@
+<div class="fadeIn">
+  <div class="spotlight-container">
+    <button class="ctrl-right" (click)="switchToNext()">NEXT</button>
+    <button class="ctrl-left" (click)="switchToPrev()">PREV</button>
+    <div class="page-counter">
+      <div class="page-ball" id="pb-1"></div>
+      <div class="page-ball" id="pb-2"></div>
+      <div class="page-ball" id="pb-3"></div>
+    </div>
+    <div class="timer-bar" hidden>
+      <div id="time-bar" class="bar-inner" hidden></div>
+    </div>
+    <div class="slide-container" id="slide-1">
+      <div class="info-area-container">
+        <div class="spacer-div"></div>
+        <div class="info-area" id="info-1">
+          <h1 class="slide-title">ยินดีต้อนรับสู่ MEAN Stack</h1>
+          <h3 class="slide-sub-text">เราคือผู้นำในด้านการให้บริการเกี่ยวกับการพัฒนาและออกแบบเว็บไซต์แบบครบวงจร</h3>
+          <button class="slide-button">เข้าชมเว็บไซต์</button>
+        </div>
+      </div>
+      <div class="slide grayout">
+      </div>
+    </div>
+    <div class="slide-container" id="slide-2">
+      <div class="info-area-container">
+        <div class="spacer-div"></div>
+        <div class="info-area out-fade-down" id="info-2">
+          <h1 class="slide-title">เพิ่มศักยภาพและพัฒนาไปด้วยกัน</h1>
+          <h3 class="slide-sub-text">เรามีบุคลากรที่มีคุณภาพและพร้อมพัฒนาโครงสร้างองค์กรไปด้วยกัน</h3>
+          <button class="slide-button" routerLink="/about-us">เกี่ยวกับเรา</button>
+        </div>
+      </div>
+      <div class="slide-2 darken">
+      </div>
+    </div>
+    <div class="slide-container" id="slide-3">
+      <div class="info-area-container">
+        <div class="spacer-div"></div>
+        <div class="info-area out-fade-down" id="info-3">
+          <h1 class="slide-title">ร่วมกันพัฒนาผลงานที่มีคุณภาพ</h1>
+          <h3 class="slide-sub-text">อีกหนึ่งช่องทางสำหรับการสร้างผลงานที่ตอบโจทย์ลูกค้าทุกรูปแบบ
+            เพื่อให้คุณได้รับบริการที่น่าพึงพอใจ</h3>
+          <button class="slide-button" routerLink="/website-design-service">เรียนรู้เพิ่มเติม</button>
+        </div>
+      </div>
+      <div class="slide-3 tint-dark">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 py-3">
+        <div class="reveal-left">
+          <h2 class="title-section">MEAN Stack คืออะไร ?
+          </h2>
+          <p>
+            MEAN Stack เป็นบริษัทที่ให้บริการเกี่ยวกับการเรียนรู้และพัฒนาเว็บไซต์ รวมไปจนถึงการให้บริการทางด้านคลาวด์
+            ฐานข้อมูล สร้างโดเมนและดูแลระบบเซิร์ฟเวอร์ โดยทางบริษัทจะคำนึงจากความต้องการของลูกค้าเป็นหลัก
+            เพื่อให้ผู้ใช้บริการได้รับผลงานตามที่ต้องการในระยะเวลาที่รวดเร็ว โดยทางบริษัทมีบุคลากรที่มีคุณภาพในการให้บริการ
+            เพื่อรองรับผู้ใช้บริการที่หลากหลาย ทำให้ผู้ใช้บริการมีความสะดวกสบายในการพัฒนาเว็บไซต์
+            อีกทั้งยังช่วยลดกระบวนการที่ยุ่งยากในการจัดหาทรัพยากรต่างๆเพื่อให้ผู้ใช้บริการสามารถสร้าง
+            Production ได้อย่างง่ายดายภายในระยะเวลาอันสั้น โดยผู้ใช้บริการสามารถเลือกใช้บริการได้ตามความต้องการของผู้ใช้บริการ
+            ทำให้มีความยืดหยุ่นและตอบโจทย์ต่อความต้องการของลูกค้าทุกประเภท
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-6 py-3 p-5">
+        <div class="reveal-top">
+          <div class="about-img">
+            <img src="assets/img/annie-spratt-wgivdx9dBdQ-unsplash.jpg" draggable="false" alt="" class="responsive-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="page-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 py-3 p-5">
+        <div class="reveal-left">
+          <div class="about-img">
+            <img src="assets/img/nastuh-abootalebi-rSpMla5RItA-unsplash.jpg" draggable="false" alt="" class="responsive-img">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 py-3">
+        <div class="reveal-right">
+          <h2 class="title-section">ปณิธานและเป้าหมายของ MEAN Stack</h2>
+          <p>
+            บริษัทมุ่งมั่นที่จะเติมโตอย่างยั่งยืนในระยะเวลาอันสั้นและตระหนักถึงผลประโยชน์ของผู้มีส่วนได้เสียทุกกลุ่มดังนั้นบริษัทจะดำเนินการโดย
+            มีการมุ่งเน้นกลุ่มลูกค้า รวมไปถึงมีการกระจายฐานลูกค้าให้มากขึ้น
+            พร้อมทั้งสร้างชื่อเสียงของบริษัทจากความสำเร็จของการส่งมอบโครงการ
+            รักษาความสามารถในการทำกำไร โดยการปรับปรุงกระบวนการผลิต เพื่อความปลอดภัยและลดต้นุทนในการทำงาน
+            เพิ่มประสิทธิภาพของการดำเนินงานโดยการลดขั้นตอนการทำงานที่ไม่จำเป็นและเพิ่มมาตราฐานการทำงาน
+            รวมทั้งมีการรวมขั้นตอนการทำงานต่างๆ เข้าด้วยกัน
+            เพิ่มขีดความสามารถของบุคลากรอย่างต่อเนื่อง เพื่อรองรับการเติบโตของบริษัท
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 class="why-mean-stack">บริการที่จำเป็นสำหรับคุณ</h4>
+
+<div class="container mb-10">
+  <div class="row align-items-center">
+  <div class="col-lg-3 d-flex justify-content-center" routerLink="/cloud-service">
+    <div class="menu-services d-flex align-items-center flex-column">
+      <i class="fa-solid fa-cloud fa-8x"></i>
+      <div>
+        <h5><small>บริการคลาวด์</small></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 d-flex justify-content-center" routerLink="/domain-service">
+    <div class="menu-services d-flex align-items-center flex-column">
+      <i class="fa-regular fa-rectangle-list fa-8x"></i>
+      <div>
+        <h5><small>บริการโดเมน</small></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 d-flex justify-content-center" routerLink="/website-design-service">
+    <div class="menu-services d-flex align-items-center flex-column">
+      <i class="fa-solid fa-code fa-8x"></i>
+      <div>
+        <h5><small>ออกแบบเว็บไซต์</small></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 d-flex justify-content-center" routerLink="/server-service">
+    <div class="menu-services d-flex align-items-center flex-column">
+      <i class="fa-solid fa-server fa-8x"></i>
+      <div>
+        <h5><small>ดูแลระบบเซิร์ฟเวอร์</small></h5>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
