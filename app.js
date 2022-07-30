@@ -38,7 +38,7 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 // Static directory path
-app.use("/", express.static(path.join(__dirname,'/dist/MEAN-Stack')));
+app.use(express.static(__dirname+'/dist/MEAN-Stack'));
 
 // });
 app.use('/uploads', express.static(path.join(__dirname, 'uploads/')));
@@ -61,6 +61,6 @@ app.use((err, req, res, next) => {
 
 setRoutes(app);
 
-app.get('*', (req,res) =>{
-  res.sendFile(path.join(__dirname+'/dist/MEAN-Stack/index.html'));
+app.get('/*', (req,res) =>{
+  res.sendFile(__dirname+'/dist/MEAN-Stack/index.html');
 });
