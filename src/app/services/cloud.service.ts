@@ -24,27 +24,27 @@ export class CloudService {
 
   // Add
   addCloud(data: Cloud): Observable<any> {
-    return this.http.post(`https://mean-stack-aon.herokuapp.com/api/addCloud`, data);
+    return this.http.post(`${location.origin}/api/addCloud`, data);
   }
 
   // Get all Cloud
   getClouds() {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getClouds`);
+    return this.http.get(`${location.origin}/api/getClouds`);
   }
 
   // Get Cloud by id
   getCloud(id: any): Observable<any>{
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getCloudById/${id}`, { headers: this.httpHeaders });
+    return this.http.get(`${location.origin}/api/getCloudById/${id}`, { headers: this.httpHeaders });
   }
 
   // Update Cloud
   updateCloud(id: any, data: any): Observable<any>{
-    return this.http.put(`https://mean-stack-aon.herokuapp.com/api/updateCloud/${id}`, data, { headers: this.httpHeaders });
+    return this.http.put(`${location.origin}/api/updateCloud/${id}`, data, { headers: this.httpHeaders });
   }
 
   // Delete Cloud
   deleteCloud(id: any): Observable<any> {
-    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteCloud/${id}`, {headers: this.httpHeaders});
+    return this.http.delete(`${location.origin}/api/deleteCloud/${id}`, {headers: this.httpHeaders});
   }
 
 }

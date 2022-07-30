@@ -28,27 +28,27 @@ export class DomainService {
 
   // Add
   addDomain(data: Domain): Observable<any> {
-    return this.http.post(`https://mean-stack-aon.herokuapp.com/api/addDomain`, data);
+    return this.http.post(`${location.origin}/api/addDomain`, data);
   }
 
   // Get all Domain
   getDomains() {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getDomains`);
+    return this.http.get(`${location.origin}/api/getDomains`);
   }
 
   // Get Domain by id
   getDomain(id: any): Observable<any>{
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getDomainById/${id}`, { headers: this.httpHeaders });
+    return this.http.get(`${location.origin}/api/getDomainById/${id}`, { headers: this.httpHeaders });
   }
 
   // Update Domain
   updateDomain(id: any, data: any): Observable<any>{
-    return this.http.put(`https://mean-stack-aon.herokuapp.com/api/updateDomain/${id}`, data, { headers: this.httpHeaders });
+    return this.http.put(`${location.origin}/api/updateDomain/${id}`, data, { headers: this.httpHeaders });
   }
 
   // Delete Domain
   deleteDomain(id: any): Observable<any> {
-    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteDomain/${id}`, {headers: this.httpHeaders});
+    return this.http.delete(`${location.origin}/api/deleteDomain/${id}`, {headers: this.httpHeaders});
   }
 
 }

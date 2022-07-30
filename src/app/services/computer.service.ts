@@ -51,17 +51,17 @@ export class ComputerService {
     formData.append('image', image == null ? null : image[0]);
     formData.append('description', data.description);
     formData.append('type', data.type);
-    return this.http.post<any>(`https://mean-stack-aon.herokuapp.com/api/addComputer`, formData).pipe(catchError(this.handleError));
+    return this.http.post<any>(`${location.origin}/api/addComputer`, formData).pipe(catchError(this.handleError));
   }
 
   // Get all Computer
   getComputers() {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getComputers`);
+    return this.http.get(`${location.origin}/api/getComputers`);
   }
 
   // Get Computer by id
   getComputer(id: any): Observable<any> {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getComputerById/${id}`, { headers: this.httpHeaders }).pipe(map((res) => {
+    return this.http.get(`${location.origin}/api/getComputerById/${id}`, { headers: this.httpHeaders }).pipe(map((res) => {
       return res || {}
     }),
       catchError(this.handleError)
@@ -79,12 +79,12 @@ export class ComputerService {
     formData.append('image', image == null ? null : image[0]);
     formData.append('description', data.description);
     formData.append('type', data.type);
-    return this.http.put<any>(`https://mean-stack-aon.herokuapp.com/api/updateComputer/${id}`, formData).pipe(catchError(this.handleError));
+    return this.http.put<any>(`${location.origin}/api/updateComputer/${id}`, formData).pipe(catchError(this.handleError));
   }
 
   // Delete Computer
   deleteComputer(id: any): Observable<any> {
-    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteComputer/${id}`, { headers: this.httpHeaders }).pipe(catchError(this.handleError));
+    return this.http.delete(`${location.origin}/api/deleteComputer/${id}`, { headers: this.httpHeaders }).pipe(catchError(this.handleError));
   }
 
 }

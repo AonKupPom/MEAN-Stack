@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./copmuter.component.css']
 })
 export class CopmuterComponent implements OnInit {
-  path = "https://mean-stack-aon.herokuapp.com/";
+  path = `${location.origin}/`;
   imagePath;
   image;
   editImage;

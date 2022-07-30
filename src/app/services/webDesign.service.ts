@@ -24,27 +24,27 @@ export class WebDesignService {
 
   // Add
   addWebDesign(data: WebDesign): Observable<any> {
-    return this.http.post(`https://mean-stack-aon.herokuapp.com/api/addWebDesign`, data);
+    return this.http.post(`${location.origin}/api/addWebDesign`, data);
   }
 
   // Get all WebDesign
   getWebDesigns() {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getWebDesigns`);
+    return this.http.get(`${location.origin}/api/getWebDesigns`);
   }
 
   // Get WebDesign by id
   getWebDesign(id: any): Observable<any>{
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getWebDesignById/${id}`, { headers: this.httpHeaders });
+    return this.http.get(`${location.origin}/api/getWebDesignById/${id}`, { headers: this.httpHeaders });
   }
 
   // Update WebDesign
   updateWebDesign(id: any, data: any): Observable<any>{
-    return this.http.put(`https://mean-stack-aon.herokuapp.com/api/updateWebDesign/${id}`, data, { headers: this.httpHeaders });
+    return this.http.put(`${location.origin}/api/updateWebDesign/${id}`, data, { headers: this.httpHeaders });
   }
 
   // Delete WebDesign
   deleteWebDesign(id: any): Observable<any> {
-    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteWebDesign/${id}`, {headers: this.httpHeaders});
+    return this.http.delete(`${location.origin}/api/deleteWebDesign/${id}`, {headers: this.httpHeaders});
   }
 
 }

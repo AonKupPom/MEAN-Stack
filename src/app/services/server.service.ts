@@ -28,27 +28,27 @@ export class ServerService {
 
   // Add
   addServer(data: Server): Observable<any> {
-    return this.http.post(`https://mean-stack-aon.herokuapp.com/api/addServer`, data);
+    return this.http.post(`${location.origin}/api/addServer`, data);
   }
 
   // Get all Server
   getServers() {
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getServers`);
+    return this.http.get(`${location.origin}/api/getServers`);
   }
 
   // Get Server by id
   getServer(id: any): Observable<any>{
-    return this.http.get(`https://mean-stack-aon.herokuapp.com/api/getServerById/${id}`, { headers: this.httpHeaders });
+    return this.http.get(`${location.origin}/api/getServerById/${id}`, { headers: this.httpHeaders });
   }
 
   // Update Server
   updateServer(id: any, data: any): Observable<any>{
-    return this.http.put(`https://mean-stack-aon.herokuapp.com/api/updateServer/${id}`, data, { headers: this.httpHeaders });
+    return this.http.put(`${location.origin}/api/updateServer/${id}`, data, { headers: this.httpHeaders });
   }
 
   // Delete Server
   deleteServer(id: any): Observable<any> {
-    return this.http.delete(`https://mean-stack-aon.herokuapp.com/api/deleteServer/${id}`, {headers: this.httpHeaders});
+    return this.http.delete(`${location.origin}/api/deleteServer/${id}`, {headers: this.httpHeaders});
   }
 
 }
