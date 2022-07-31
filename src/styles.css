@@ -10,6 +10,10 @@
   }
 }
 
+html {
+  font-size: calc(60% + 0.6vmin);
+}
+
 .page-section{
   margin-top: 5%;
   overflow: hidden;
